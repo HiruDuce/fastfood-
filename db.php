@@ -1,15 +1,15 @@
 <?php
-// Sử dụng hàm getenv() để lấy các biến môi trường do Railway cung cấp
+// SỬ DỤNG HÀM THỦ TỤC mysqli_connect()
 $host = getenv("MYSQLHOST");
 $user = getenv("MYSQLUSER");
 $pass = getenv("MYSQLPASSWORD");
 $db   = getenv("MYSQLDATABASE");
-$port = getenv("MYSQLPORT"); // Thêm Port vì Railway không dùng Port mặc định 3306
+$port = getenv("MYSQLPORT");
 
-// Khởi tạo kết nối mới
-$conn = new mysqli($host, $user, $pass, $db, $port);
+// Sử dụng mysqli_connect()
+$conn = mysqli_connect($host, $user, $pass, $db, $port); 
 
-if ($conn->connect_error) {
-    die("Kết nối thất bại: " . $conn->connect_error);
+if (!$conn) {
+    die("Kết nối thất bại: " . mysqli_connect_error());
 }
 ?>
