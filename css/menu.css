@@ -1,0 +1,13 @@
+/* menu.css - styles specific to the homepage menu section */
+.menu-section { background: var(--bg-light); }
+.menu-section .tab-button { margin-right: 10px; transition: background-color .15s ease, color .15s ease, border-color .15s ease; }
+.menu-section .tab-button.active,
+.menu-section .btn-outline-primary.tab-button.active {
+  color: #fff !important;
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+}
+.menu-section .tab-content { display: none; margin-top: 20px; }
+.menu-section .menu-tab.fade-tab { opacity: 0; transform: translateY(16px); transition: opacity 1.0s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1); will-change: opacity, transform; display: none; }
+.menu-section .fade-tab.showing { display: flex; }
+.menu-section .fade-tab.active { opacity: 1; transform: translateY(0); }
