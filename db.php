@@ -1,15 +1,14 @@
 <?php
-// SỬ DỤNG HÀM THỦ TỤC mysqli_connect()
 $host = getenv("MYSQLHOST");
+$db   = getenv("MYSQLDATABASE");
 $user = getenv("MYSQLUSER");
 $pass = getenv("MYSQLPASSWORD");
-$db   = getenv("MYSQLDATABASE");
 $port = getenv("MYSQLPORT");
 
-// Sử dụng mysqli_connect()
-$conn = mysqli_connect($host, $user, $pass, $db, $port); 
-
-if (!$conn) {
-    die("Kết nối thất bại: " . mysqli_connect_error());
+try {
+    $conn = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8", $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Kết nối DB thành công với PDO!";
+} catch (PDOException $e) {
+    die("Kết nối DB thất bại: " . $e->getMessage());
 }
-?>
